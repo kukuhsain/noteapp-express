@@ -3,6 +3,7 @@ const path = require("path");
 const cookieParser = require("cookie-parser");
 const logger = require("morgan");
 const indexRouter = require("./routes/index");
+const notesRouter = require("./routes/notes");
 
 function normalizePort(val) {
   const port = parseInt(val, 10);
@@ -20,7 +21,9 @@ expressApp
   .use(express.static(path.join(__dirname, "public")));
 
 // Routing
-expressApp.use("/", indexRouter);
+expressApp
+  .use("/", indexRouter)
+  .use("/notes", notesRouter);
 
 const http = require("http");
 const port = normalizePort(process.env.PORT || "5000");
