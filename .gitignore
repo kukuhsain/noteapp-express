@@ -62,3 +62,6 @@ typings/
 
 # WebStorm
 .idea
+
+# Typescript build output
+build

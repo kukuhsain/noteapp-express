@@ -3,8 +3,11 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "node app.js",
-    "start-dev": "nodemon app.js"
+    "start": "node build/app.js",
+    "build": "tsc",
+    "start-dev": "concurrently \"npm run watch-ts\" \"npm run watch-node\"",
+    "watch-ts": "tsc -w",
+    "watch-node": "nodemon build/app.js"
   },
   "dependencies": {
     "cookie-parser": "~1.4.4",
@@ -13,6 +16,9 @@
     "morgan": "~1.9.1"
   },
   "devDependencies": {
-    "nodemon": "^1.19.4"
+    "@types/node": "^12.12.7",
+    "concurrently": "^5.0.0",
+    "nodemon": "^1.19.4",
+    "typescript": "^3.7.2"
   }
 }
