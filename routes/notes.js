@@ -10,10 +10,12 @@ const getNoteById = id => {
   return null;
 };
 
+// Get all notes
 router.get("/", (req, res) => {
   res.json({data: dummyNotes});
 });
 
+// Get a note
 router.get("/:id", (req, res) => {
   const id = Number(req.params.id);
   const note = getNoteById(id);
@@ -21,6 +23,7 @@ router.get("/:id", (req, res) => {
   return res.json({data: note});
 });
 
+// Add note
 router.post("/", (req, res) => {
   const data = req.body;
   if (!data.title) return res.status(400).json({error: "Title cannot be empty!"});
@@ -32,6 +35,17 @@ router.post("/", (req, res) => {
     content: data.content,
   };
   dummyNotes.push(note);
+  return res.json({data: note});
+});
+
+// Update note
+router.post("/:id", (req, res) => {
+  const id = Number(req.params.id);
+  const note = getNoteById(id);
+  if (!id || !note) return res.status(404).json({error: "Not found!"});
+  const {title, content} = req.body;
+  if (title) note.title = title;
+  if (content) note.content = content;
   return res.json({data: note});
 });
 
