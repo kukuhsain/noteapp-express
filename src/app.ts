@@ -5,6 +5,7 @@ import http from "http";
 import path from "path";
 import cookieParser from "cookie-parser";
 import logger from "morgan";
+import cors from "cors";
 import {createConnection} from "typeorm";
 
 import indexRouter from "./routes";
@@ -24,6 +25,7 @@ expressApp
     .use(logger("dev"))
     .use(express.json())
     .use(express.urlencoded({extended: false}))
+    .use(cors())
     .use(cookieParser())
     .use(express.static(path.join(__dirname, "public")));
 
