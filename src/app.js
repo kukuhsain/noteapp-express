@@ -1,9 +1,13 @@
+const dotenv = require("dotenv");
 const express = require("express");
+const http = require("http");
 const path = require("path");
 const cookieParser = require("cookie-parser");
 const logger = require("morgan");
 const indexRouter = require("./routes");
 const notesRouter = require("./routes/notes");
+
+dotenv.config();
 
 function normalizePort(val) {
   const port = parseInt(val, 10);
@@ -25,10 +29,13 @@ expressApp
   .use("/", indexRouter)
   .use("/notes", notesRouter);
 
-const http = require("http");
-const port = normalizePort(process.env.PORT || "5000");
-const server = http.createServer(expressApp);
-server
-  .listen(port)
-  .on("error", error => console.error(error))
-  .on("listening", () => console.log("Listening on port " + port));
+function startServer() {
+  const port = normalizePort(process.env.PORT || "5000");
+  const server = http.createServer(expressApp);
+  server
+    .listen(port)
+    .on("error", error => console.error(error))
+    .on("listening", () => console.log("Listening on port " + port));
+}
+
+module.exports = {startServer};

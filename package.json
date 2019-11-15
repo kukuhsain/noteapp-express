@@ -1,24 +1,31 @@
 {
-  "name": "noteapp-express",
-  "version": "0.0.0",
-  "private": true,
-  "scripts": {
-    "start": "node build/app.js",
-    "build": "tsc",
-    "start-dev": "concurrently \"npm run watch-ts\" \"npm run watch-node\"",
-    "watch-ts": "tsc -w",
-    "watch-node": "nodemon build/app.js"
-  },
-  "dependencies": {
-    "cookie-parser": "~1.4.4",
-    "debug": "~2.6.9",
-    "express": "~4.16.1",
-    "morgan": "~1.9.1"
-  },
-  "devDependencies": {
-    "@types/node": "^12.12.7",
-    "concurrently": "^5.0.0",
-    "nodemon": "^1.19.4",
-    "typescript": "^3.7.2"
-  }
+   "name": "noteapp-express",
+   "version": "0.0.0",
+   "private": true,
+   "scripts": {
+      "start": "node build/index.js",
+      "build": "tsc",
+      "start-dev": "concurrently \"npm run watch-ts\" \"npm run watch-node\"",
+      "watch-ts": "tsc -w",
+      "watch-node": "nodemon build/index.js"
+   },
+   "dependencies": {
+      "cookie-parser": "~1.4.4",
+      "debug": "~2.6.9",
+      "dotenv": "^8.2.0",
+      "express": "~4.16.1",
+      "morgan": "~1.9.1",
+      "mysql": "^2.14.1",
+      "pg": "^7.12.1",
+      "pg-hstore": "^2.3.3",
+      "reflect-metadata": "^0.1.10",
+      "typeorm": "0.2.20"
+   },
+   "devDependencies": {
+      "@types/node": "^12.12.7",
+      "concurrently": "^5.0.0",
+      "nodemon": "^1.19.4",
+      "ts-node": "^8.5.2",
+      "typescript": "^3.7.2"
+   }
 }
